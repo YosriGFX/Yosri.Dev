@@ -1,20 +1,166 @@
 body {
-  background-color: #333;
+  background-color: #151515;
   margin: 0;
   padding: 0;
   font-family: 'Nanum Gothic Coding', monospace;
+  color: #ccc4c1;
 }
-
 header {
   text-align: center;
-  display: block;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: fixed;
+  z-index: 10;
+  height: 2vh;
+  background-color: rgba(48, 56, 58, 0.5);
+  padding: 1vh;
+  font-size: 12pt;
 }
-
+footer {
+  text-align: center;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: fixed;
+  z-index: 10;
+  height: 2vh;
+  width: 100%;
+  background-color: rgba(48, 56, 58, 0.5);
+  padding: 1vh;
+  font-size: 8pt;
+}
+a {
+  text-decoration: none;
+  color: #7d9a90;
+}
+@keyframes portrait_container {
+  0%   {background-color: rgba(48, 56, 58, 1);}
+  50%  {background-color: rgba(48, 56, 58, 0.5); padding-bottom: 5pt;}
+  100%  {background-color: rgba(48, 56, 58, 1);}
+}
+.portrait_container {
+  z-index: 5;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: portrait_container;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  border-radius: 50%;
+  width: 180pt;
+  height: 180pt;
+  text-align: center;
+}
 .portrait {
-  width: 25vw;
-  max-width: 200px;
+  width: 150pt;
+  height: 150pt;
+  margin-top: 15pt;
+  cursor: pointer;
+}
+@keyframes menu_animation {
+  0%   {opacity: 0;}
+  100%  {opacity: 1;}
+}
+#Menu {
+  animation-name: menu_animation;
+  animation-duration: 2s;
+}
+@keyframes menu_animation_2 {
+  0%   {opacity: 1;}
+  100%  {opacity: 0;}
+}
+#Menu.hide {
+  animation-name: menu_animation_2;
+  animation-duration: 2s;
+}
+.menu_top {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  margin-left: 0.5vw;
+}
+.box {
+  width: 33vw;
+  height: 50vh;
+  text-align: center;
+  float: left;
+  margin-top: 37.5vh;
+}
+.left_divider {
+  position: absolute;
+  margin-left: -0.5vw;
+  width: 50vw;
+  height: 7.5pt;
+  background-color: rgba(48, 56, 58, 1);
+  transform: skewY(45deg);
+}
+.right_divider {
+  position: absolute;
+  margin-left: 49.5vw;
+  width: 50vw;
+  height: 7.5pt;
+  background-color: rgba(48, 56, 58, 1);
+  transform: skewY(-45deg);
+}
+.menu_bottom {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  top: 50vh;
+  margin-left: 0.5vw;
+}
+.boxb {
+  width: 49vw;
+  height: 20vh;
+  text-align: center;
+  float: left;
+  padding-top: 25vh;
+  border-top: 5pt solid rgba(48, 56, 58, 1);
+}
+.aboutme {
+  margin-top: 10vh;
+}
+.aboutme h1 {
+  font-family: 'Nanum Gothic Coding', monospace;
+  font-weight: bold;
+  font-size: 30pt;
+  color: #cbc2bd;
+  text-transform: uppercase;
+  background-color: rgba(48, 56, 58, 0.5);
+  box-shadow: 0 0 5pt 5pt rgba(48, 56, 58, 0.5);
+}
+.aboutme span {
+  font-family: 'Nanum Gothic Coding', monospace;
+  font-size: 12pt;
+  color: #cbc2bd;
+  text-transform: uppercase;
+  background-color: rgba(48, 56, 58, 0.5);
+  box-shadow: 0 5pt 5pt 5pt rgba(48, 56, 58, 0.5);
 }
 
-.Menu {
-  margin-top: 50vh;
+span {
+  font-family: 'Nanum Gothic Coding', monospace;
+  font-size: 28pt;
+  color: #cbc2bd;
+}
+
+
+@media screen and (max-width: 768px) {
+  .right_divider {
+      margin-top: 30vh;
+  }
+  .left_divider {
+      margin-top: 30vh;
+  }
+  .aboutme {
+    margin-top: 7.5vh;
+  }
+  span {
+    font-size: 12pt;
+  }
+  .aboutme span {
+    font-size: 9pt;
+  }
 }
