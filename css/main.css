@@ -33,6 +33,7 @@ footer {
 a {
   text-decoration: none;
   color: #7d9a90;
+  cursor: pointer;
 }
 @keyframes portrait_container {
   0%   {background-color: rgba(48, 56, 58, 1);}

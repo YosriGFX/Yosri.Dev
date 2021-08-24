@@ -21,7 +21,7 @@ function contact_pop() {
         menu.classList.remove("hide");
         setTimeout(function(){
           menu.style.display = 'block';
-        }, 1);
+        }, 0);
     }
     else{
         menu.classList.add("hide");
