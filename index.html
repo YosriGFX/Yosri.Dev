@@ -7,6 +7,7 @@
     <link href="css/main.css" rel="stylesheet">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="js/main.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap');
     </style>
@@ -34,13 +35,13 @@
     </header>
     <main>
         <div class="portrait_container">
-            <img src="/img/portrait.png" class="portrait" onclick="show_hide()">
+            <img src="/img/portrait.png" class="portrait" onclick="show_hide();">
         </div>
         <div id="Menu" class="hide" style="display: none;">
             <div class="menu_top">
                 <div class="left_divider"></div>
                 <div class="box">
-                    <span><a href="">SKILLS</a></span>
+                    <span><a href="/Yosri - 2021 Resume.pdf" target="_blank">RESUME</a></span>
                 </div>
                 <div class="box" style="margin-top: 0;">
                     <div class="aboutme">
@@ -50,16 +51,27 @@
                 </div>
                 <div class="right_divider"></div>
                 <div class="box">
-                    <span class="contact"><a href="">CONTACT ME</a></span>
+                    <span class="contact"><a onclick="contact_pop();">CONTACT ME</a></span>
                 </div>
             </div>
             <div class="menu_bottom">
                 <div class="boxb" style="border-right: 5pt solid rgba(48, 56, 58, 1);">
-                    <span><a href="">BLOG</a></span>
+                    <span><a href="https://yosrigfx.blogspot.com" target="_blank">BLOG</a></span>
                 </div>
                 <div class="boxb">
-                    <span><a href="">PROJECTS</a></span>
+                    <span><a href="https://github.com/yosrigfx" target="_blank">PROJECTS</a></span>
                 </div>
+            </div>
+        </div>
+        <div class="contact_pop" id="contact_pop" style="display:none;" class="hide" onclick="contact_pop();">
+            <h1>Let's Get in touch</h1>
+            <div class="contact_form"><hr>
+                <span><i class="icon-phone"></i>&nbsp; Phone: +216 20 823 908</span><hr>
+                <span><i class="icon-envelope"></i>&nbsp; Email: GeekPlus@pm.me</span><hr>
+                <span><i class="icon-instagram"></i>&nbsp; Instagram: <a href="https://www.instagram.com/YosriGFX" target="_blank">@YosriGFX</a></span><hr>
+                <span><i class="icon-facebook"></i>&nbsp;&nbsp; Facebook: <a href="https://www.facebook.com/Ghorbel.Yosri/" target="_blank">/Ghorbel.Yosri</a></span><hr>
+                <span><i class="icon-youtube"></i>&nbsp; Youtube: <a href="https://www.youtube.com/channel/UCy7P00vPgfEwbUm8bQ_USsg" target="_blank">Yosri Ghorbel</a></span><hr>
+                <span><i class="icon-linkedin"></i>&nbsp; LinkedIn: <a href="https://www.linkedin.com/in/yosri-ghorbel-64756915a" target="_blank">/yosri-ghorbel-64756915a</a></span><hr>
             </div>
         </div>
     </main>
