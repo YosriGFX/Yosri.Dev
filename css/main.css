@@ -146,7 +146,6 @@ span {
   color: #cbc2bd;
 }
 
-
 @media screen and (max-width: 768px) {
   .boxb{
     padding-top: 25%;
@@ -165,5 +164,8 @@ span {
   }
   .aboutme span {
     font-size: 9pt;
+  }
+  .contact {
+    margin-left: 5pt;
   }
 }
