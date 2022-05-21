@@ -2,8 +2,7 @@
 
 
 apt-get update -y
-apt-get install -y dhcpcd hostapd dnsmasq
-apt-get -y install build-essential git dkms linux-headers-$(uname -r)
+apt-get install -y dhcpcd hostapd dnsmasq build-essential git dkms iptables
 
 git clone https://github.com/kelebek333/rtl8188fu
 dkms add ./rtl8188fu
@@ -22,14 +21,14 @@ country=US
 network={
     ssid="Lafayette"
     psk="Hamdilag86"
-}' >> /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
+}' > /etc/wpa_supplicant/wpa_supplicant-wlan1.conf
 echo "Creating /etc/dhcpcd.conf"
 printf "interface wlan1
     static ip_address=192.168.1.40/24
     static routers=192.168.1.1
 interface wlan0
     static ip_address=192.168.220.1/24
-    static routers=192.168.220.0" >> /etc/dhcpcd.conf
+    static routers=192.168.220.0" > /etc/dhcpcd.conf
 echo "Creating /etc/hostapd/hostapd.conf"
 printf "interface=wlan0
 hw_mode=g
@@ -43,9 +42,9 @@ wpa=2
 wpa_key_mgmt=WPA-PSK
 rsn_pairwise=CCMP
 ssid=Home
-wpa_passphrase=Home123456" >> /etc/hostapd/hostapd.conf
+wpa_passphrase=Home123456" > /etc/hostapd/hostapd.conf
 echo "Creating /etc/default/hostapd"
-printf '\nDAEMON_CONF="/etc/hostapd/hostapd.conf"\n\n' >> /etc/default/hostapd
+printf '\nDAEMON_CONF="/etc/hostapd/hostapd.conf"\n\n' > /etc/default/hostapd
 mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 echo "Creating /etc/dnsmasq.conf"
 printf "interface=wlan0
@@ -61,5 +60,7 @@ iptables -A FORWARD -i wlan0 -o wlan1 -m state --state RELATED,ESTABLISHED -j AC
 iptables -A FORWARD -i wlan1 -o wlan0 -j ACCEPT
 sh -c "iptables-save > /etc/iptables.ipv4.nat"
 printf "iptables-restore < /etc/iptables.ipv4.nat" >> /etc/rc.local
+systemctl unmask hostapd
+systemctl enable hostapd
 service hostapd start
 service dnsmasq start
