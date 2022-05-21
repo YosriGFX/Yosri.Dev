@@ -2,9 +2,21 @@
 
 
 apt-get update -y
-apt-get install -y dhcpcd hostapd dnsmasq git iptables
+apt-get install -y dhcpcd hostapd dnsmasq git iptables build-essential dkms
+apt-get install -y linux-headers-$(uname -r)
 
-echo "options rtl8188eu rtw_power_mgnt=0 rtw_enusbss=0" | tee /etc/modprobe.d/rtl8188eu.conf
+# Drivers
+git clone https://github.com/kelebek333/rtl8188fu
+sudo dkms add ./rtl8188fu
+sudo dkms build rtl8188fu/1.0
+sudo dkms install rtl8188fu/1.0
+sudo cp ./rtl8188fu/firmware/rtl8188fufw.bin /lib/firmware/rtlwifi/
+# Driver Config
+sudo mkdir -p /etc/modprobe.d/
+sudo touch /etc/modprobe.d/rtl8188fu.conf
+echo "options rtl8188fu rtw_power_mgnt=0 rtw_enusbss=0" | sudo tee /etc/modprobe.d/rtl8188fu.conf
+
+# HotSpot Config
 printf "interface wlan1
     static ip_address=10.42.0.1/24
     static routers=10.42.0.1" > /etc/dhcpcd.conf
